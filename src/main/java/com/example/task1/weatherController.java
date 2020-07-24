@@ -13,15 +13,13 @@ public class weatherController
     private weatherService weatherService;
 
     @GetMapping("/{city}")
-    @ExceptionHandler(CityNotFoundException.class)
-    @ResponseStatus(HttpStatus.FOUND)
-    public ResponseEntity<String> getTemperature(@PathVariable String city)
+    public ResponseEntity<WeatherResponse> getTemperature(@PathVariable String city)
     {
-        double temp = weatherService.getweatherByCityName(city);
+        WeatherResponse response = weatherService.getweatherByCityName(city);
 
 
-        return (temp!=0) ? new ResponseEntity(temp,HttpStatus.FOUND) :
-                new ResponseEntity<>( HttpStatus.NO_CONTENT);
+        return (response != null) ? new ResponseEntity(response,HttpStatus.OK) :
+                new ResponseEntity( HttpStatus.NO_CONTENT);
     }
 
 

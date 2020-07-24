@@ -12,25 +12,23 @@ import java.util.Set;
 public class weatherService
 {
 
-    public double getweatherByCityName(String city)
+    public WeatherResponse getweatherByCityName(String city)
     {
         double result=0;
         HashMap<String,Double> cityWeather = new HashMap<>();
         cityWeather.put("Rogers", 23.5);
         cityWeather.put("NYC", 21.8);
         cityWeather.put("Omaha", 22.3);
-
+        cityWeather.put("VJA",40.0);
 
         for(String checkCity : cityWeather.keySet())
         {
             if(cityWeather.containsKey(city)) {
-
-
-                result= cityWeather.get(city);
-
+               result= cityWeather.get(city);
             }
-
         }
-        return result;
+
+
+        return new WeatherResponse(2.3);
     }
 }
